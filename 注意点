@@ -1,0 +1,5 @@
+python manage.py migrate
+のところでエラーとなる。
+これは python3.7 と　django==1.11　の組み合わせで起こるので
+python3.5 を使って作業を進めることにした。
+
