@@ -2,4 +2,17 @@ python manage.py migrate
 のところでエラーとなる。
 これは python3.7 と　django==1.11　の組み合わせで起こるので
 python3.5 を使って作業を進めることにした。
+----------------------
+import PATH エラー
+これは　django2 で利用できるが 1 では　url を使う。
+"""mysite URL Configuration
+"""
+from django.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url('', include('blog.urls')),
+]
+----------------------------
 
