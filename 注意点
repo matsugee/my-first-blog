@@ -15,4 +15,25 @@ urlpatterns = [
     url('', include('blog.urls')),
 ]
 ----------------------------
+blog/templates/blog/post_list.html
+で
+<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+を
+<h1><a href="(% url 'post_detail' pk=post.pk %)">{{ post.title }}</a></h1>　
+に（｛｝を（）に変える　）したらエラーがでなくなった！
 
+しかし、これは意図した動作ではない。
+題字をクリックしたら　loacalhost:800/post/pkの数字　とならなければならない。
+---------------------------------
+　post_detailの表示がうまくいかなかった件
+　urls.py を次のように修正して成功した！
+　
+　'''urlpatterns = [
+    url('', views.post_list, name='post_list'),
+    url('post/<int:pk>/', views.post_detail, name='post_detail'),
+]'''
+urlpatterns = [
+    url(r'^$', views.post_list),
+    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+]
+----------------------------------------　　　
